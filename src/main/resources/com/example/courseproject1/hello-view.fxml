@@ -1,16 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.courseproject1.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #37474f#37474f;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.courseproject1.Controller">
+   <children>
+      <AnchorPane layoutX="-13.0" layoutY="101.0" prefHeight="502.0" prefWidth="718.0" style="-fx-background-color: #fafafa;">
+         <children>
+            <TextField fx:id="loginField" layoutX="243.0" layoutY="176.0" prefHeight="25.0" prefWidth="245.0" promptText="Логин" style="-fx-background-color: #eeeeee#eeeeee; -fx-border-color: silver; -fx-border-radius: 5;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="passwordField" layoutX="243.0" layoutY="231.0" prefHeight="25.0" prefWidth="245.0" promptText="Пароль" style="-fx-background-color: #eeeeee#eeeeee; -fx-border-color: silver; -fx-border-radius: 5;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </PasswordField>
+            <Label layoutX="275.0" layoutY="115.0" text="Авторизация" textFill="#8d8d8d">
+               <font>
+                  <Font name="Apple Symbols" size="30.0" />
+               </font>
+            </Label>
+            <Button fx:id="authSignInButton" layoutX="311.0" layoutY="316.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="109.0" style="-fx-background-color: #F39C63;" text="Войти" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Label fx:id="checkPassword" layoutX="356.0" layoutY="286.0" prefHeight="17.0" prefWidth="19.0" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="282.0" layoutY="16.0" text="Quotes" textFill="WHITE">
+         <font>
+            <Font name="Baloo 2 Regular" size="39.0" />
+         </font>
+      </Label>
+      <Button fx:id="loginSignUpButton" layoutX="505.0" layoutY="34.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #F39C63;" text="Зарегистрироваться" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
