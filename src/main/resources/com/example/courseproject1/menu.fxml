@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.courseproject1.Menu"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #37474f#37474f;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.courseproject1.Menu">
+   <children>
+      <AnchorPane layoutX="-15.0" layoutY="101.0" prefHeight="502.0" prefWidth="718.0" style="-fx-background-color: #fafafa;">
+         <children>
+            <Label layoutX="319.0" layoutY="66.0" text="Меню" textFill="#8d8d8d">
+               <font>
+                  <Font name="Apple Symbols" size="30.0" />
+               </font>
+            </Label>
+            <Button fx:id="createQuoteButton" layoutX="273.0" layoutY="200.0" mnemonicParsing="false" onAction="#createQuoteButtonListener" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #73A353#73A353;" text="Создать цитату" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="QuotesButton" layoutX="273.0" layoutY="150.0" mnemonicParsing="false" onAction="#QuotesButtonListener" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #73A353#73A353;" text="Цитаты" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="myQuotesButton" layoutX="273.0" layoutY="248.0" mnemonicParsing="false" onAction="#myQuotesButtonListener" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #73A353#73A353;" text="Мои цитаты" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="exitButton" layoutX="612.0" layoutY="442.0" mnemonicParsing="false" onAction="#exitButtonListener" prefHeight="31.0" prefWidth="92.0" style="-fx-background-color: #F39C63;" text="Выйти" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Label layoutX="282.0" layoutY="16.0" text="Quotes" textFill="WHITE">
+         <font>
+            <Font name="Baloo 2 Regular" size="39.0" />
+         </font>
+      </Label>
+      <Button fx:id="accountButton" layoutX="594.0" layoutY="34.0" mnemonicParsing="false" onAction="#accountButtonListener" prefHeight="31.0" prefWidth="92.0" style="-fx-background-color: #F39C63;" text="Аккаунт" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>
