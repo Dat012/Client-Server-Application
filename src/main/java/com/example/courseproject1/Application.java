@@ -22,7 +22,6 @@ public class Application extends javafx.application.Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
-        Application.setConnect();
     }
 
     public static void main(String[] args) {
@@ -39,11 +38,10 @@ public class Application extends javafx.application.Application {
 
     }
 
-    public static Connection setConnect() {
+    public static Connection connectToDatabase() {
         Connection connection = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-//
             connection = DriverManager.getConnection(
                     "jdbc:mysql://std-mysql.ist.mospolytech.ru:3306/std_2047_courseproject",
                     "std_2047_courseproject", "courseproject1");

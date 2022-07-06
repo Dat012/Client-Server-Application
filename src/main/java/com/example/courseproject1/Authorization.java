@@ -37,16 +37,12 @@ public class Authorization {
 
     @FXML
     void signInButtonListener() {
-        signInButton.setOnAction(actionEvent -> {
 
-        });
     }
 
     @FXML
     void signUpButtonListener(ActionEvent event) {
-        signUpButton.setOnAction(actionEvent -> {
-            Application.changeScene("registration.fxml");
-        });
+        Application.changeScene("registration.fxml");
     }
 
     @FXML

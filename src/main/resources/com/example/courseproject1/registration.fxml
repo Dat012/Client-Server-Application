@@ -26,12 +26,17 @@
                   <Font name="Apple Symbols" size="30.0" />
                </font>
             </Label>
-            <Button fx:id="signUpButton" layoutX="279.0" layoutY="315.0" mnemonicParsing="false" onAction="#signUpButtonListener" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #F39C63;" text="Зарегистрироваться" textFill="WHITE">
+            <Button fx:id="signUpButton" layoutX="279.0" layoutY="364.0" mnemonicParsing="false" onAction="#signUpButtonListener" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #F39C63;" text="Зарегистрироваться" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Label fx:id="checkPassword" layoutX="356.0" layoutY="286.0" prefHeight="17.0" prefWidth="60.0" />
+            <Label fx:id="checkPassword" alignment="CENTER" layoutX="243.0" layoutY="338.0" prefHeight="17.0" prefWidth="245.0" textAlignment="CENTER" />
+            <TextField fx:id="groupField" layoutX="243.0" layoutY="288.0" prefHeight="25.0" prefWidth="245.0" promptText="Группа" style="-fx-background-color: #eeeeee#eeeeee; -fx-border-color: silver; -fx-border-radius: 5;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
          </children>
       </AnchorPane>
       <Label layoutX="282.0" layoutY="16.0" text="Quotes" textFill="WHITE">
