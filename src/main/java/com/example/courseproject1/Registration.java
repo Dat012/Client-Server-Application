@@ -48,9 +48,9 @@ public class Registration {
 
     @FXML
     void signUpButtonListener(ActionEvent event) {
-        Connection connection = Application.connectToDatabase();
+        //Connection connection = Application.connectToDatabase();
         try {
-            Statement statement = connection.createStatement();
+            // Statement statement = connection.createStatement();
             user = new User();
             String login = loginField.getText();
             String hashPassword = user.makeHash(passwordField.getText());
@@ -63,7 +63,8 @@ public class Registration {
                 int group = Integer.parseInt(groupString);
                 String query = String.format("INSERT INTO user(login, password_hash, status, gang) VALUES ('%s', '%s', %d, %d);", login, hashPassword, 3, group);
                 try {
-                    statement.execute(query);
+                    // statement.execute(query);
+                    Application.executeSQL(query);
                     checkPassword.setTextFill(Paint.valueOf("GREEN"));
                     checkPassword.setText("You have successfully registered");
                 } catch (SQLIntegrityConstraintViolationException e) {
@@ -72,7 +73,7 @@ public class Registration {
                 }
             }
 
-            connection.close();
+            //connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("SQLException при создании statement в регистрации");

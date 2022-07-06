@@ -6,8 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.*;
 import java.util.Objects;
 
 public class Application extends javafx.application.Application {
@@ -36,6 +35,20 @@ public class Application extends javafx.application.Application {
             System.out.println(e + " Исключение в методе changeScene при загрузке FXML");
         }
 
+    }
+
+    public static ResultSet executeSQL(String query) throws SQLException {
+        Connection connection = Application.connectToDatabase();
+        Statement statement = connection.createStatement();
+        ResultSet result = null;
+        if (query.contains("SELECT")) {
+            result = statement.executeQuery(query);
+        } else {
+            statement.execute(query);
+        }
+
+        connection.close();
+        return result;
     }
 
     public static Connection connectToDatabase() {
