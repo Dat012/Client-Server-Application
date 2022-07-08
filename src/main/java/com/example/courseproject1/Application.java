@@ -37,8 +37,8 @@ public class Application extends javafx.application.Application {
 
     }
 
-    public static ResultSet executeSQL(String query) throws SQLException {
-        Connection connection = Application.connectToDatabase();
+    public static ResultSet executeSQL(String query, Connection connection) throws SQLException {
+        //connection = Application.connectToDatabase();
         Statement statement = connection.createStatement();
         ResultSet result = null;
         if (query.contains("SELECT")) {
@@ -47,7 +47,6 @@ public class Application extends javafx.application.Application {
             statement.execute(query);
         }
 
-        connection.close();
         return result;
     }
 

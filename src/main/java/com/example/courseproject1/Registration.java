@@ -21,6 +21,7 @@ public class Registration {
 
     private User user;
 
+    Connection connection;
     @FXML
     private Button backButton;
 
@@ -48,7 +49,6 @@ public class Registration {
 
     @FXML
     void signUpButtonListener(ActionEvent event) {
-        //Connection connection = Application.connectToDatabase();
         try {
             // Statement statement = connection.createStatement();
             user = new User();
@@ -64,16 +64,17 @@ public class Registration {
                 String query = String.format("INSERT INTO user(login, password_hash, status, gang) VALUES ('%s', '%s', %d, %d);", login, hashPassword, 3, group);
                 try {
                     // statement.execute(query);
-                    Application.executeSQL(query);
+                    connection = Application.connectToDatabase();
+                    Application.executeSQL(query, connection);
                     checkPassword.setTextFill(Paint.valueOf("GREEN"));
                     checkPassword.setText("You have successfully registered");
+                    connection.close();
                 } catch (SQLIntegrityConstraintViolationException e) {
                     checkPassword.setTextFill(Paint.valueOf("RED"));
                     checkPassword.setText("This login already exists");
                 }
             }
 
-            //connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("SQLException при создании statement в регистрации");

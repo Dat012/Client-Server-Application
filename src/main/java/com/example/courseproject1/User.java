@@ -30,7 +30,7 @@ public class User {
         } catch (NoSuchAlgorithmException e) {
             System.out.println("Нет такого алгоритма шифрования");
         }
-        System.out.println(hashPassword);
+        //System.out.println(hashPassword);
         return hashPassword;
     }
 
