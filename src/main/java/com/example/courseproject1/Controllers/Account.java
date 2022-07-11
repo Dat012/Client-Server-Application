@@ -71,7 +71,7 @@ public class Account {
                     Application.user.setLogin(newLogin);
                     Application.user.setHashPassword(User.makeHashStatic(newPassword));
                 } else if (oldLogin.length() * newLogin.length() > 0 && oldLogin.equals(Application.user.getLogin())) {                                // Логин
-                    query = "UPDATE user SET login = ? WHERE login = ?;"; //, newLogin, oldLogin);
+                    query = "UPDATE user SET login = ? WHERE login = ?;";
 
                     statement = connection.prepareStatement(query);
                     statement.setString(1, newLogin);
@@ -91,6 +91,7 @@ public class Account {
                 if (query.equals("")){
                     checkFields.setTextFill(Paint.valueOf("RED"));
                     checkFields.setText("Wrong data or fields are not filled");
+                    System.out.println("oldLogin " + oldLogin + "    newLogin " + " " + newLogin + "     Application.user.getLogin()" + Application.user.getLogin());
                 } else {
                     try {
                         statement.execute();
@@ -100,6 +101,7 @@ public class Account {
                     } catch (SQLException e) {
                         checkFields.setTextFill(Paint.valueOf("RED"));
                         checkFields.setText("This login already exists");
+                        Application.user.setLogin(oldLogin);
                     }
                 }
             }

@@ -21,9 +21,6 @@ public class AllQuotes {
     private Button accountButton;
 
     @FXML
-    private Button backButton;
-
-    @FXML
     private TableView<Quote> allQuotesTable;
 
     @FXML
@@ -52,11 +49,6 @@ public class AllQuotes {
         collectionQuotes.fillQuotes();
 
         allQuotesTable.setItems(collectionQuotes.getQuotes());
-    }
-
-    @FXML
-    void accountButtonListener(ActionEvent event) {
-
     }
 
     @FXML

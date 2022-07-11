@@ -90,7 +90,6 @@ public class CollectionQuotes {
             if (result2.next()) {
                 gang = result2.getInt(1);
             }
-            System.out.println("status " + status);
             connection.close();
             connection = Application.connectToDatabase();
             switch (status) {
@@ -103,7 +102,6 @@ public class CollectionQuotes {
                     query = "SELECT * FROM teacher_quotes WHERE gang = ?;";
                     statement = connection.prepareStatement(query);
                     statement.setInt(1, gang);
-                    System.out.println(gang);
                     break;
                 case 1:
                     query = "SELECT * FROM teacher_quotes;";
