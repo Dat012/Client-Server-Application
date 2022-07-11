@@ -4,15 +4,18 @@ import com.example.courseproject1.Application;
 import com.example.courseproject1.CollectionQuotes;
 import com.example.courseproject1.Quote;
 import com.example.courseproject1.User;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
@@ -37,6 +40,9 @@ public class MyQuotes {
 
     @FXML
     private Button deleteQuoteButton;
+
+    @FXML
+    private Label countLabel;
 
     @FXML
     private TableView<Quote> myQuotesTable;
@@ -108,6 +114,33 @@ public class MyQuotes {
         dateColumn.setCellValueFactory(new PropertyValueFactory<Quote, Date>("date"));
 
         myQuotesTable.setItems(user.getMyQuotes().getQuotes());
+
+        updateCountLabel();
+        Application.user.getMyQuotes().getQuotes().addListener(new ListChangeListener<Quote>() {
+            @Override
+            public void onChanged(Change<? extends Quote> change) {
+                updateCountLabel();
+            }
+        });
+    }
+
+    private void updateCountLabel() {
+//        connection = Application.connectToDatabase();
+//        String query = "SELECT COUNT(*) as count FROM teacher_quotes WHERE gang = ?";
+//        PreparedStatement statement = null;
+//        try {
+//            statement = connection.prepareStatement(query);
+//            statement.setInt(1, Application.user.getGang());
+//            ResultSet resultSet = statement.executeQuery();
+//            if (resultSet.next()) {
+//                countLabel.setText("Мои записи : " + resultSet.getString(1));
+//            }
+//            connection.close();
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+
+        countLabel.setText("Мои записи : " + Application.user.getMyQuotes().getQuotes().size());
     }
 
 }

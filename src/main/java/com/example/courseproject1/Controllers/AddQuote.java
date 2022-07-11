@@ -51,23 +51,23 @@ public class AddQuote {
                 checkFields.setTextFill(Paint.valueOf("RED"));
                 checkFields.setText("Пожалуйста, заполните все поля");
             } else {
-                String query = "INSERT INTO teacher_quotes(quote, subject, teacher, date, user_login) VALUES (?, ?, ?, ?, ?);";
+                String query = "INSERT INTO teacher_quotes(quote, subject, teacher, date, user_login, gang) VALUES (?, ?, ?, ?, ?, ?);";
                 PreparedStatement statement = connection.prepareStatement(query);
 
                 //statement.setInt(1, Application.user.getId());
-                statement.setString(1, Application.arrangeLineBreaks(quoteContent));
+                statement.setString(1, quoteContent);
                 statement.setString(2, subject);
                 statement.setString(3, teacher);
                 statement.setDate(4, Date.valueOf(date));
                 statement.setString(5, Application.user.getLogin());
+                statement.setInt(6, Application.user.getGang());
 
                 try {
                     statement.execute();
                     checkFields.setTextFill(Paint.valueOf("GREEN"));
                     checkFields.setText("Вы добавили цитату");
-                    Application.user.getMyQuotes().add(new Quote(Application.arrangeLineBreaks(quoteContent), subject, teacher, Date.valueOf(date), Application.user.getLogin()));
+                    Application.user.getMyQuotes().add(new Quote(quoteContent, subject, teacher, Date.valueOf(date), Application.user.getLogin(), Application.user.getGang()));
                 } catch (SQLIntegrityConstraintViolationException e) {
-                    e.printStackTrace();
                     checkFields.setTextFill(Paint.valueOf("RED"));
                     checkFields.setText("Цитата не была добавлена :(");
                 }

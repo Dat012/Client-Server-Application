@@ -33,6 +33,7 @@ public class CollectionQuotes {
         String tempTeacher;
         String tempSubject;
         String tempUserLogin;
+        int tempUserGang;
         Date tempDate;
 
         connection = Application.connectToDatabase();
@@ -45,8 +46,9 @@ public class CollectionQuotes {
                 tempSubject = resultSet.getString("subject");
                 tempTeacher = resultSet.getString("teacher");
                 tempUserLogin = resultSet.getString("user_login");
+                tempUserGang = resultSet.getInt("gang");
                 tempDate = resultSet.getDate("date");
-                quotes.addAll(new Quote(tempQuote, tempSubject, tempTeacher, tempDate, tempUserLogin));
+                quotes.addAll(new Quote(tempQuote, tempSubject, tempTeacher, tempDate, tempUserLogin, tempUserGang));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -59,27 +61,65 @@ public class CollectionQuotes {
     }
 
     public void fillQuotes(String userLogin) {
-        int tempId;
         String tempQuote;
         String tempTeacher;
         String tempSubject;
         String tempUserLogin;
+        int tempUserGang;
         Date tempDate;
 
         connection = Application.connectToDatabase();
-        String query = "SELECT * FROM teacher_quotes WHERE user_login = ?;";//, userLogin);
-
+        PreparedStatement statement = null;
+        String query = "";
         try {
-            PreparedStatement statement = connection.prepareStatement(query);
+            query = "SELECT status FROM user WHERE login = ?";
+            statement = connection.prepareStatement(query);
             statement.setString(1, userLogin);
+            ResultSet result = statement.executeQuery();
+            int status = -1;
+            if (result.next()) {
+                status = result.getInt(1);
+            }
+            connection.close();
+            connection = Application.connectToDatabase();
+            query = "SELECT gang FROM user WHERE login = ?";
+            statement = connection.prepareStatement(query);
+            statement.setString(1, userLogin);
+            ResultSet result2 = statement.executeQuery();
+            int gang = -1;
+            if (result2.next()) {
+                gang = result2.getInt(1);
+            }
+            System.out.println("status " + status);
+            connection.close();
+            connection = Application.connectToDatabase();
+            switch (status) {
+                case 3:
+                    query = "SELECT * FROM teacher_quotes WHERE user_login = ?;";
+                    statement = connection.prepareStatement(query);
+                    statement.setString(1, userLogin);
+                    break;
+                case 2:
+                    query = "SELECT * FROM teacher_quotes WHERE gang = ?;";
+                    statement = connection.prepareStatement(query);
+                    statement.setInt(1, gang);
+                    System.out.println(gang);
+                    break;
+                case 1:
+                    query = "SELECT * FROM teacher_quotes;";
+                    statement = connection.prepareStatement(query);
+                    break;
+            }
+
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 tempQuote = resultSet.getString("quote");
                 tempSubject = resultSet.getString("subject");
                 tempTeacher = resultSet.getString("teacher");
                 tempUserLogin = resultSet.getString("user_login");
+                tempUserGang = resultSet.getInt("gang");
                 tempDate = resultSet.getDate("date");
-                quotes.addAll(new Quote(tempQuote, tempSubject, tempTeacher, tempDate, tempUserLogin));
+                quotes.addAll(new Quote(tempQuote, tempSubject, tempTeacher, tempDate, tempUserLogin, tempUserGang));
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -79,9 +79,8 @@ public class EditQuote {
                     statement.execute();
                     checkFields.setTextFill(Paint.valueOf("GREEN"));
                     checkFields.setText("Вы изменили цитату");
-                    Application.user.getMyQuotes().updateQuote(changingQuote, new Quote(quoteContent, subject, teacher, java.sql.Date.valueOf(date), Application.user.getLogin()));
+                    Application.user.getMyQuotes().updateQuote(changingQuote, new Quote(quoteContent, subject, teacher, java.sql.Date.valueOf(date), Application.user.getLogin(), Application.user.getGang()));
                 } catch (SQLIntegrityConstraintViolationException e) {
-                    e.printStackTrace();
                     checkFields.setTextFill(Paint.valueOf("RED"));
                     checkFields.setText("Цитата не была изменена :(");
                 }

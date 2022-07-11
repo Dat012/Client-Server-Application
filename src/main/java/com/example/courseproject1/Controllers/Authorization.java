@@ -85,6 +85,12 @@ public class Authorization {
     }
 
     @FXML
+    void signInGuestButtonListener(ActionEvent event) {
+        Application.changeScene("all_quotes.fxml");
+        Application.user = new User(4);
+    }
+
+    @FXML
     void signUpButtonListener(ActionEvent event) {
         Application.changeScene("registration.fxml");
     }

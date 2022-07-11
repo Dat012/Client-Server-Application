@@ -11,13 +11,16 @@ public class Quote {
     private Date date;
     private String login;
 
-    public Quote(String content, String subject, String teacher, Date date, String login) {
+    private int gang;
+
+    public Quote(String content, String subject, String teacher, Date date, String login, int gang) {
         //this.id = id;
         this.content = content;
         this.subject = subject;
         this.teacher = teacher;
         this.date = date;
         this.login = login;
+        this.gang = gang;
     }
 
     public int getId() {

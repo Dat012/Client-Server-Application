@@ -11,7 +11,7 @@
    <children>
       <AnchorPane layoutX="-15.0" layoutY="101.0" prefHeight="502.0" prefWidth="718.0" style="-fx-background-color: #fafafa;">
          <children>
-            <Button fx:id="backButton" layoutX="604.0" layoutY="442.0" mnemonicParsing="false" onAction="#backButtonListener" prefHeight="31.0" prefWidth="92.0" style="-fx-background-color: #F39C63;" text="Назад" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+            <Button fx:id="backButton" layoutX="604.0" layoutY="444.0" mnemonicParsing="false" onAction="#backButtonListener" prefHeight="31.0" prefWidth="92.0" style="-fx-background-color: #F39C63;" text="Назад" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                <font>
                   <Font size="16.0" />
                </font>
@@ -25,22 +25,22 @@
                   <TableColumn fx:id="dateColumn" prefWidth="88.0" text="Дата" />
                </columns>
             </TableView>
-            <Button fx:id="changeQuoteButton" layoutX="167.0" layoutY="442.0" mnemonicParsing="false" onAction="#changeQuoteButtonListener" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: #F39C63;" text="Изменить" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+            <Button fx:id="changeQuoteButton" layoutX="167.0" layoutY="444.0" mnemonicParsing="false" onAction="#changeQuoteButtonListener" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: #F39C63;" text="Изменить" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="addButton" layoutX="39.0" layoutY="442.0" mnemonicParsing="false" onAction="#addButtonListener" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: #F39C63;" text="Добавить" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+            <Button fx:id="addButton" layoutX="39.0" layoutY="444.0" mnemonicParsing="false" onAction="#addButtonListener" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: #F39C63;" text="Добавить" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="deleteQuoteButton" layoutX="296.0" layoutY="442.0" mnemonicParsing="false" onAction="#deleteQuoteButtonListener" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: #F39C63;" text="Удалить" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+            <Button fx:id="deleteQuoteButton" layoutX="296.0" layoutY="444.0" mnemonicParsing="false" onAction="#deleteQuoteButtonListener" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: #F39C63;" text="Удалить" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Label layoutX="39.0" layoutY="6.0" prefHeight="17.0" prefWidth="119.0" text="Мои цитаты" />
+            <Label fx:id="countLabel" layoutX="39.0" layoutY="6.0" prefHeight="17.0" prefWidth="119.0" text="Мои цитаты: " />
          </children>
       </AnchorPane>
       <Label layoutX="282.0" layoutY="16.0" text="Quotes" textFill="WHITE">
@@ -48,10 +48,5 @@
             <Font name="Baloo 2 Regular" size="39.0" />
          </font>
       </Label>
-      <Button fx:id="accountButton" layoutX="594.0" layoutY="34.0" mnemonicParsing="false" onAction="#accountButtonListener" prefHeight="31.0" prefWidth="92.0" style="-fx-background-color: #F39C63;" text="Аккаунт" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>

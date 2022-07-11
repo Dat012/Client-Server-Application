@@ -59,6 +59,10 @@ public class User {
     public User() {
     }
 
+    public User(int status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "User{" +

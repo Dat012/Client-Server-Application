@@ -61,7 +61,10 @@ public class AllQuotes {
 
     @FXML
     void backButtonListener(ActionEvent event) {
-        Application.changeScene("menu.fxml");
+        if (Application.user.getStatus() == 4)
+            Application.changeScene("authorization.fxml");
+        else
+            Application.changeScene("menu.fxml");
     }
 
 

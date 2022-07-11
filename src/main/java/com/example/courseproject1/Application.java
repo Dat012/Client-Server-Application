@@ -68,11 +68,11 @@ public class Application extends javafx.application.Application {
         return connection;
     }
 
-    public static String arrangeLineBreaks(String s) {
-        StringBuilder string = new StringBuilder(s);
-        for (int i = 0; i < 50; i++) {
-            string.insert(i, '\n');
-        }
-        return string.toString();
-    }
+//    public static String arrangeLineBreaks(String s) {
+//        StringBuilder string = new StringBuilder(s);
+//        for (int i = 0; i < 50; i++) {
+//            string.insert(i, '\n');
+//        }
+//        return string.toString();
+//    }
 }
