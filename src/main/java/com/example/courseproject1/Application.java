@@ -12,6 +12,10 @@ import java.util.Objects;
 public class Application extends javafx.application.Application {
 
     private static Stage currentStage;
+
+    public static User user;
+
+    public static CollectionQuotes allQuotes = new CollectionQuotes();
     @Override
     public void start(Stage stage) throws IOException {
         currentStage = stage;
@@ -32,23 +36,23 @@ public class Application extends javafx.application.Application {
             Parent parent = FXMLLoader.load(Objects.requireNonNull(Application.class.getResource(fxml)));
             currentStage.getScene().setRoot(parent);
         } catch (IOException e) {
-            System.out.println(e + " Исключение в методе changeScene при загрузке FXML");
+            e.printStackTrace();
         }
 
     }
 
-    public static ResultSet executeSQL(String query, Connection connection) throws SQLException {
-        //connection = Application.connectToDatabase();
-        Statement statement = connection.createStatement();
-        ResultSet result = null;
-        if (query.contains("SELECT")) {
-            result = statement.executeQuery(query);
-        } else {
-            statement.execute(query);
-        }
-
-        return result;
-    }
+//    public static ResultSet executeSQL(String query, Connection connection) throws SQLException {
+//        //connection = Application.connectToDatabase();
+//        PreparedStatement statement = connection.prepareStatement(query);
+//        ResultSet result = null;
+//        if (query.contains("SELECT")) {
+//            result = statement.executeQuery(query);
+//        } else {
+//            statement.execute(query);
+//        }
+//
+//        return result;
+//    }
 
     public static Connection connectToDatabase() {
         Connection connection = null;
@@ -57,19 +61,18 @@ public class Application extends javafx.application.Application {
             connection = DriverManager.getConnection(
                     "jdbc:mysql://std-mysql.ist.mospolytech.ru:3306/std_2047_courseproject",
                     "std_2047_courseproject", "courseproject1");
-//
-//            Statement statement = connection.createStatement();
-//            String query = "SELECT * FROM user";
-//            ResultSet result = statement.executeQuery(query);
-
-//            String password_hash = result.getString("password_hash");
-
-
-//
         }
         catch(Exception e){
             System.out.println(e);
         }
         return connection;
+    }
+
+    public static String arrangeLineBreaks(String s) {
+        StringBuilder string = new StringBuilder(s);
+        for (int i = 0; i < 50; i++) {
+            string.insert(i, '\n');
+        }
+        return string.toString();
     }
 }

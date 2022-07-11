@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #37474f#37474f;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.courseproject1.Menu">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #37474f#37474f;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.courseproject1.Controllers.Menu">
    <children>
       <AnchorPane layoutX="-15.0" layoutY="101.0" prefHeight="502.0" prefWidth="718.0" style="-fx-background-color: #fafafa;">
          <children>
@@ -14,17 +14,12 @@
                   <Font name="Apple Symbols" size="30.0" />
                </font>
             </Label>
-            <Button fx:id="createQuoteButton" layoutX="273.0" layoutY="200.0" mnemonicParsing="false" onAction="#createQuoteButtonListener" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #73A353#73A353;" text="Создать цитату" textFill="WHITE">
+            <Button fx:id="QuotesButton" layoutX="273.0" layoutY="175.0" mnemonicParsing="false" onAction="#QuotesButtonListener" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #73A353#73A353;" text="Все цитаты" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="QuotesButton" layoutX="273.0" layoutY="150.0" mnemonicParsing="false" onAction="#QuotesButtonListener" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #73A353#73A353;" text="Цитаты" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
-            <Button fx:id="myQuotesButton" layoutX="273.0" layoutY="248.0" mnemonicParsing="false" onAction="#myQuotesButtonListener" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #73A353#73A353;" text="Мои цитаты" textFill="WHITE">
+            <Button fx:id="myQuotesButton" layoutX="273.0" layoutY="229.0" mnemonicParsing="false" onAction="#myQuotesButtonListener" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #73A353#73A353;" text="Мои цитаты" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>

@@ -1,10 +1,13 @@
-package com.example.courseproject1;
+package com.example.courseproject1.Controllers;
 
 import java.net.URL;
 import java.sql.*;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import com.example.courseproject1.Application;
+import com.example.courseproject1.CollectionQuotes;
+import com.example.courseproject1.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -44,18 +47,29 @@ public class Authorization {
     @FXML
     void signInButtonListener() {
         try {
-            user = new User();
             String login = loginField.getText();
-            String hashPassword = user.makeHash(passwordField.getText());
+            String hashPassword = User.makeHashStatic(passwordField.getText());
 
             if (Objects.equals(login, "") || Objects.equals(hashPassword, "")) {
                 checkPassword.setTextFill(Paint.valueOf("RED"));
                 checkPassword.setText("Please fill in all the fields");
             } else {
                 connection = Application.connectToDatabase();
-                String query = String.format("SELECT * FROM user WHERE login = '%s' AND password_hash = '%s';", login, hashPassword);
-                ResultSet resultSet = Application.executeSQL(query, connection);
+                String query = "SELECT * FROM user WHERE login = ? AND password_hash = ?;";
+                PreparedStatement statement = connection.prepareStatement(query);
+                statement.setString(1, login);
+                statement.setString(2, hashPassword);
+                ResultSet resultSet = statement.executeQuery();
                 if (resultSet.next()) {
+                    int userId = resultSet.getInt("id");
+                    int userStatus = resultSet.getInt("status");
+                    int userGang = resultSet.getInt("gang");
+                    CollectionQuotes userQuotes = new CollectionQuotes();
+                    userQuotes.fillQuotes(login);
+                    user = new User(userId, login, hashPassword, userStatus, userGang, userQuotes);
+                    Application.user = user;
+                    Application.allQuotes.fillQuotes();  // Получение всех цитат
+                    //Application.user.getMyQuotes().fillQuotes(Application.user.getLogin()); // Получение цитат пользователя, который сейчас авторизуется
                     Application.changeScene("menu.fxml");
                 } else {
                     checkPassword.setTextFill(Paint.valueOf("RED"));

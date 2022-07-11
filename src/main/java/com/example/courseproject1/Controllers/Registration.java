@@ -1,5 +1,7 @@
-package com.example.courseproject1;
+package com.example.courseproject1.Controllers;
 
+import com.example.courseproject1.Application;
+import com.example.courseproject1.User;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -11,15 +13,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Objects;
 
 public class Registration {
 
-    private User user;
+    User user;
 
     Connection connection;
     @FXML
@@ -42,18 +41,15 @@ public class Registration {
 
     @FXML
     void backButtonListener(ActionEvent event) {
-        backButton.setOnAction(actionEvent -> {
-            Application.changeScene("authorization.fxml");
-        });
+        Application.changeScene("authorization.fxml");
     }
 
     @FXML
     void signUpButtonListener(ActionEvent event) {
         try {
             // Statement statement = connection.createStatement();
-            user = new User();
             String login = loginField.getText();
-            String hashPassword = user.makeHash(passwordField.getText());
+            String hashPassword = User.makeHashStatic(passwordField.getText());
             String groupString = groupField.getText();
 
             if (Objects.equals(login, "") || Objects.equals(hashPassword, "") || Objects.equals(groupString, "")) {
@@ -61,11 +57,17 @@ public class Registration {
                 checkPassword.setText("Please fill in all the fields");
             } else {
                 int group = Integer.parseInt(groupString);
-                String query = String.format("INSERT INTO user(login, password_hash, status, gang) VALUES ('%s', '%s', %d, %d);", login, hashPassword, 3, group);
+                String query = "INSERT INTO user(login, password_hash, status, gang) VALUES (?, ?, ?, ?);";//, login, hashPassword, 3, group);
                 try {
-                    // statement.execute(query);
+
                     connection = Application.connectToDatabase();
-                    Application.executeSQL(query, connection);
+                    PreparedStatement statement = connection.prepareStatement(query);
+                    statement.setString(1, login);
+                    statement.setString(2, hashPassword);
+                    statement.setInt(3, 3);
+                    statement.setInt(4, group);
+                    statement.execute();
+
                     checkPassword.setTextFill(Paint.valueOf("GREEN"));
                     checkPassword.setText("You have successfully registered");
                     connection.close();

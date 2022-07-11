@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #37474f#37474f;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.courseproject1.Controllers.AddQuote">
+   <children>
+      <AnchorPane layoutX="-13.0" layoutY="101.0" prefHeight="502.0" prefWidth="718.0" style="-fx-background-color: #fafafa;">
+         <children>
+            <TextField fx:id="quoteContentField" alignment="TOP_LEFT" layoutX="39.0" layoutY="27.0" prefHeight="345.0" prefWidth="447.0" promptText="Введите цитату" style="-fx-border-color: silver; -fx-border-radius: 5;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </TextField>
+            <Button fx:id="addQuoteButton" layoutX="284.0" layoutY="403.0" mnemonicParsing="false" onAction="#addQuoteButtonListener" prefHeight="31.0" prefWidth="164.0" style="-fx-background-color: #F39C63;" text="Добавить цитату" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Label fx:id="checkFields" alignment="CENTER" layoutX="247.0" layoutY="446.0" prefHeight="17.0" prefWidth="239.0" />
+            <TextField fx:id="teacherField" layoutX="502.0" layoutY="27.0" prefHeight="36.0" prefWidth="194.0" promptText="Преподаватель" style="-fx-border-color: silver; -fx-border-radius: 5;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="subjectField" layoutX="502.0" layoutY="182.0" prefHeight="36.0" prefWidth="194.0" promptText="Предмет" style="-fx-border-color: silver; -fx-border-radius: 5;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </TextField>
+            <DatePicker fx:id="datePicker" layoutX="502.0" layoutY="347.0" onAction="#datePickerListener" prefHeight="23.0" prefWidth="194.0" promptText="Дата" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="282.0" layoutY="16.0" text="Quotes" textFill="WHITE">
+         <font>
+            <Font name="Baloo 2 Regular" size="39.0" />
+         </font>
+      </Label>
+      <Button fx:id="backButton" layoutX="567.0" layoutY="34.0" mnemonicParsing="false" onAction="#backButtonListener" prefHeight="31.0" prefWidth="104.0" style="-fx-background-color: #F39C63;" text="Назад" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
